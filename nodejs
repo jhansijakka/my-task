@@ -1,0 +1,87 @@
+dont go sudo -i
+stay in ubuntu and s
+1.sudo su jenkins
+switch user to jenkins user
+
+o/p:-
+jenkins@ip-172-31-9-248:/home/ubuntu$ 
+
+2. curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+o/p:-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+3:vi ~/.bashrc
+create a file and paste above content
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+ 
+4.source ~/.bashrc
+
+5.nvm list
+o/p:
+lts/dubnium -> v10.24.1 (-> N/A)
+lts/erbium -> v12.22.12 (-> N/A)
+lts/fermium -> v14.21.3
+lts/gallium -> v16.20.2 (-> N/A)
+lts/hydrogen -> v18.18.2 (-> N/A)
+lts/iron -> v20.9.0 (-> N/A)
+
+6.  nvm install 14
+o/p:
+
+The build folder is ready to be deployed.
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
+7. ls --- buils file will visible
+Dockerfile  README.md  build  index.html  node_modules  package-lock.json  package.json  public  src
+8. cd build/
+9. ls
+asset-manifest.json  favicon.ico  index.html  logo192.png  logo512.png  manifest.json  robots.txt  static
+10. exit --- go back to ubuntu server
+11. sudo apt install nginx
+
+12.  cd /var/www/html    ---- defaul location of nginx
+
+13. ls
+index.nginx-debian.html
+
+14. ls -lrt
+total 4
+-rw-r--r-- 1 root root 612 Nov  8 09:58 index.nginx-debian.html
+
+15. sudo cp -r /var/lib/jenkins/workspace/task/build .
+
+16. ls
+build  index.nginx-debian.html
+
+
+17. sudo mv build task
+
+18. ls -lrt
+total 8
+-rw-r--r-- 1 root root  612 Nov  8 09:58 index.nginx-debian.html
+drwxr-xr-x 3 root root 4096 Nov  8 10:00 task
+
+19. cd task  --- jenkins job name
+
+20. ls
+asset-manifest.json  favicon.ico  index.html  logo192.png  logo512.png  manifest.json  robots.txt  static
+
+
+21. sudo vi /etc/nginx/sites-enabled/default
+
+do the changes in root
+----
+root /var/www/html/task;
+------
+
+22. sudo systemctl reload nginx
+
+browse with IP address
