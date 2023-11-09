@@ -39,10 +39,11 @@ Find out more about deployment here:
 
   https://cra.link/deployment
 7. cd
+
 8.  nvm list
 9. cd workspace
 10. ls
-11. cd react/
+11. cd react/ ---- project name
 12. npm i
 13.  npm run build
 7
@@ -52,6 +53,8 @@ Dockerfile  README.md  build  index.html  node_modules  package-lock.json  packa
 16. ls
 asset-manifest.json  favicon.ico  index.html  logo192.png  logo512.png  manifest.json  robots.txt  static
 17. exit --- go back to ubuntu server
+
+
 18. sudo apt install nginx
 
 19.  cd /var/www/html    ---- defaul location of nginx
@@ -92,5 +95,21 @@ root /var/www/html/task;
 29. sudo systemctl reload nginx
 
 browse with IP address
+**************************************************************
 
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash 
 
+https://raw.githubusercontent.com/creationix/nvm/master/install.sh
+https://raw.githubusercontent.com
+
+sudo npm install -g node-gyp
+
+apt-get update
+
+apt-get -y install node-gyp
+
+apt install python2
+
+usermod -a -G sudo jenkins
+
+sudo su
